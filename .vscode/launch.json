@@ -1,0 +1,26 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "sudokuSolver: game1",
+            "type": "python",
+            "request": "launch",
+            "module": "solver",
+            "args": [ "-i", "tests/game1.txt" ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "sudokuSolver: game2",
+            "type": "python",
+            "request": "launch",
+            "module": "solver",
+            "args": [ "-i", "tests/game2.txt" ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}
