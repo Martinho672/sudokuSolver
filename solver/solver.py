@@ -1,4 +1,5 @@
-# import numpy
+import numpy
+
 
 grid = [
     [0, 0, 2, 0, 0, 0, 5, 0, 0],
@@ -14,14 +15,18 @@ grid = [
 
 
 def possivel(grid, linha, coluna, num):
+    #Retorna falso enquanto o numero passado n for possível de ser alocado a posição passada
+    #Verificando linha
     for i in range(9):
         if grid[linha][i] == num:
             return False
+    #Verificando coluna
     for i in range(9):
         if grid[i][coluna] == num:
             return False
-    colunaAux = (coluna // 3) * 3
-    linhaAux = (linha // 3) * 3
+    #Faz a verificação das "caixas" ou subgrupos do sudoku
+    colunaAux = (coluna // 3) * 3 
+    linhaAux = (linha // 3) * 3 
     for i in range(3):
         for j in range(3):
             if grid[linhaAux + i][colunaAux + j] == num:
@@ -30,8 +35,20 @@ def possivel(grid, linha, coluna, num):
 
 
 # print("entrada = \n", numpy.matrix(grid))
-print(possivel(grid, 0, 0, 3))
+#print(possivel(grid, 0, 0, 3))
 
 
-def solve(grid):
+def solver(grid):
+    for i in range(9):
+        for j in range(9):
+            if grid[i][j] == 0:
+                for num in range(1, 10):
+                    if possivel(grid, i, j, num):
+                        grid[i][j] = num
+                        solver(grid)
+                        grid[i][j] = 0 #retorna o valor inicial -> backtracking ?
+                return
+    print("saida = \n", numpy.matrix(grid))
     pass
+
+solver(grid[:])
