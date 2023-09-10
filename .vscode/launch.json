@@ -21,6 +21,15 @@
             "args": [ "-i", "tests/game2.txt" ],
             "console": "integratedTerminal",
             "justMyCode": true
+        },
+        {
+            "name": "sudokuSolver: game3 - com erro",
+            "type": "python",
+            "request": "launch",
+            "module": "solver",
+            "args": [ "-i", "tests/game3-errado.txt" ],
+            "console": "integratedTerminal",
+            "justMyCode": true
         }
     ]
 }

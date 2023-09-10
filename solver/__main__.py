@@ -28,6 +28,10 @@ def main():
         exit(-1)
 
     game = io.parse_text(input_content)
+    if not solver.is_valid_game(game):
+        print("erro: a entrada não apresenta um jogo válido")
+        exit(-1)
+
     result = solver.solve(game)
     output_content = io.format_game(result)
 
