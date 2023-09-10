@@ -1,5 +1,4 @@
 from pathlib import Path
-from solver import GameBoard
 
 
 def read_file(path: str) -> str:
@@ -12,7 +11,7 @@ def write_file(path: str, content: str):
 
 def parse_text(text: str) -> list[list[int]]:
     """
-    Converter um tabuleiro em formato texto para uma lista de valores
+    Converter um tabuleiro em formato texto para uma matriz de valores
     """
 
     text = text.replace("\n", " ").replace("\r", " ")
@@ -37,10 +36,17 @@ def parse_text(text: str) -> list[list[int]]:
     return result
 
 
-def is_valid_game(board: GameBoard) -> bool:
+def format_game(board: list[list[int]]) -> str:
     """
-    Analisar um tabuleiro e dizer se o jogo é válido (mesmo que incompleto)
-    ou não
+    Converter uma matriz de valores para um tabuleiro em formato texto
     """
 
-    return False
+    result = ""
+    for l in board:
+        for c in l:
+            result += str(c) + " "
+
+        # adicionar nova linha removendo espaço vazio anterior
+        result = result[:-1] + "\n"
+
+    return result
