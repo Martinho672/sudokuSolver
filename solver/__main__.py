@@ -31,14 +31,19 @@ def main():
     if not solver.is_valid_game(game):
         print("erro: a entrada não apresenta um jogo válido")
         exit(-1)
-
+ 
     result = solver.solve(game)
-    output_content = io.format_game(result)
-
-    if args.output != None:
-        io.write_file(args.output, output_content)
-    else:
-        print(output_content)
+    
+    if result is not None and not solver.is_valid_game(result):
+        print("erro: a entrada não apresenta um jogo válido")
+        exit(-1)
+    else :
+        output_content = io.format_game(result)
+        
+        if args.output != None:
+            io.write_file(args.output, output_content)
+        else:
+            print(output_content)
 
 
 try:

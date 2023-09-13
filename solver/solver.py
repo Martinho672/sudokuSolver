@@ -37,6 +37,8 @@ def is_valid_game(board: list[list[int]]) -> bool:
     return True
 
 
+
+
 def possivel(grid, linha, coluna, num):
     # Retorna falso enquanto o numero passado n for possível de ser alocado a posição passada
 
@@ -61,16 +63,32 @@ def possivel(grid, linha, coluna, num):
     return True
 
 
-def solve(grid: list[list[int]]) -> list[list[int]]:
+def solve(grid) :
+    vazia = encontraLacunas(grid)
+    if not vazia:
+        return grid
+    
+    linha, coluna = vazia
+
+    
+    for num in range(1, 10):
+        if possivel(grid,linha, coluna, num):
+            grid[linha][coluna] = num
+            if solve(grid):
+                return grid
+            else:
+                grid[linha][coluna] = 0
+                        
+                        
+                
+    return [[]]
+
+
+def encontraLacunas(grid) -> tuple[int, int]:
+    # Encontra a primeira célula vazia no tabuleiro
     for i in range(9):
         for j in range(9):
             if grid[i][j] == 0:
-                for num in range(1, 10):
-                    if possivel(grid, i, j, num):
-                        grid[i][j] = num
-                        solve(grid)
-                        # retorna o valor inicial -> backtracking ?
-                        grid[i][j] = 0
-                return grid
+                return (i, j)
+    return None # type: ignore
 
-    return grid
