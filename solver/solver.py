@@ -81,7 +81,7 @@ def solve(grid) :
                         
                         
                 
-    return [[]]
+    return None
 
 
 def encontraLacunas(grid) -> tuple[int, int]:

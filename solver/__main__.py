@@ -33,17 +33,20 @@ def main():
         exit(-1)
  
     result = solver.solve(game)
-    
-    if result is not None and not solver.is_valid_game(result):
+    if result is None:
+        print("erro: nenhum resultado encontrado")
+        exit(-1)
+
+    if not solver.is_valid_game(result):
         print("erro: a entrada não apresenta um jogo válido")
         exit(-1)
-    else :
-        output_content = io.format_game(result)
-        
-        if args.output != None:
-            io.write_file(args.output, output_content)
-        else:
-            print(output_content)
+    
+    output_content = io.format_game(result)
+    
+    if args.output != None:
+        io.write_file(args.output, output_content)
+    else:
+        print(output_content)
 
 
 try:

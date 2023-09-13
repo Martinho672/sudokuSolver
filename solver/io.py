@@ -42,14 +42,11 @@ def format_game(board: list[list[int]]) -> str:
     """
 
     result = ""
-    for i, linha in enumerate(board):
-        if i > 0 and i % 3 == 0:
-            result += "-" * 21 + "\n"
+    for l in board:
+        for c in l:
+            result += str(c) + " "
 
-        for j, box in enumerate(linha):
-            if j > 0 and j % 3 == 0:
-                result += "| "
-            result += str(box) + " "
+        # adicionar nova linha removendo espaço vazio anterior
         result = result[:-1] + "\n"
 
     return result
