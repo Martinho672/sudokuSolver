@@ -44,12 +44,10 @@ def possivel(grid: list[list[int]], linha: int, coluna: int, num: int) -> bool:
     for i in range(9):
         if grid[linha][i] == num:
             return False
-
-    # Verificando coluna
-    for i in range(9):
+      # Verificando coluna
         if grid[i][coluna] == num:
             return False
-
+   
     # Faz a verificação das "caixas" ou subgrupos do sudoku
     colunaAux = (coluna // 3) * 3
     linhaAux = (linha // 3) * 3
